@@ -1,0 +1,29 @@
+name: Produire un artefact
+jobs:
+  build_artefact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "26.8.1"
+      - name: Installation des dépendances
+        run: npm ci
+      - name: Compilation
+        run: npm run build
+      - name: verifie que le fichier de build existe
+        run: |
+          if [ -d "dist" ]; then
+            echo "Le fichier de build n'existe pas"
+            exit 1
+          fi
+      - name: Archivage
+        uses: actions/upload-artifact@v7
+        with:
+          name: code_compil
+          path: dist/
+      - run: |
+          echo "##build artefact" >> $GITHUB_STEP_SUMMARY
+          echo "status : ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+          echo "commit : \`\`${{ github.sha }}\`\`" >> $GITHUB_STEP_SUMMARY
