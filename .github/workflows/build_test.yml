@@ -30,4 +30,4 @@ on:
           with:
             name: build
             path: dist/
-        - run: npm test::unit
+        - run: npm test
