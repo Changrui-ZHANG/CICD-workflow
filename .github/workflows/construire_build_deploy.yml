@@ -1,0 +1,7 @@
+name: construire_build_deploy
+on:
+  workflow_dispatch:
+    env:
+      environment: "production"
+  push:
+    branches: ["main"]
