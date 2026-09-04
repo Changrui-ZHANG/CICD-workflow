@@ -1,4 +1,8 @@
 name: Produire un artefact
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
 jobs:
   build_artefact:
     runs-on: ubuntu-latest
