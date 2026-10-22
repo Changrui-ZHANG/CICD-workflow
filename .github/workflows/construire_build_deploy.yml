@@ -1,5 +1,4 @@
 name: construire_build_deploy
-
 on:
   workflow_dispatch:
     inputs:
@@ -75,4 +74,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository }}:latest
+          tags: ghcr.io/changrui-zhang/cicd-workflow:latest
